@@ -1,15 +1,18 @@
 package routes
 
 import (
-    "github.com/gin-gonic/gin"
-    "app-web/controllers"
+	"github.com/Lalozuniga/my_first_app_with_go_and_gin/controllers"
+	"github.com/gin-gonic/gin"
 )
 
-func SetupRouter() *gin.Engine {
-    r := gin.Default()
+func SetupRoutes(router *gin.Engine) {
+	router.Static("/public", "./public")
+	router.LoadHTMLGlob("views/*")
 
-    // Ruta para la pantalla de inicio
-    r.GET("/", controllers.Home)
+	router.GET("/", func(c *gin.Context) {
+		c.HTML(200, "products.html", nil)
+	})
 
-    return r
+	router.GET("/api/products", controllers.GetItems)
+	router.POST("/api/products", controllers.CreateItem)
 }

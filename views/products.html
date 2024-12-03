@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Productos</title>
+    <link rel="stylesheet" href="/public/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Gestión de Inventario</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Precio</th>
+                    <th>Imagen</th>
+                    <th>Cantidad</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody id="productTable">
+                <!-- Los productos se cargarán aquí -->
+            </tbody>
+        </table>
+
+        <button id="addProductButton">Agregar Producto</button>
+
+        <!-- Modal para agregar productos -->
+        <div id="productModal" class="modal">
+            <div class="modal-content">
+                <span class="close" id="closeModal">&times;</span>
+                <h2>Agregar Producto</h2>
+                <form id="addProductForm">
+                    <label for="name">Nombre:</label>
+                    <input type="text" id="name" name="name" required>
+
+                    <label for="price">Precio:</label>
+                    <input type="number" id="price" name="price" required>
+
+                    <label for="image">URL de Imagen:</label>
+                    <input type="text" id="image" name="image" required>
+
+                    <label for="quantity">Cantidad:</label>
+                    <input type="number" id="quantity" name="quantity" required>
+
+                    <button type="submit">Guardar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="/public/scripts.js"></script>
+</body>
+</html>

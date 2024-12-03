@@ -1,15 +1,21 @@
 package main
 
 import (
-    "github.com/gin-gonic/gin"
+	"github.com/Lalozuniga/my_first_app_with_go_and_gin/config"
+	"github.com/Lalozuniga/my_first_app_with_go_and_gin/routes"
+	"github.com/gin-gonic/gin"
 )
 
 func main() {
-    r := gin.Default() // Crea una nueva instancia del servidor con configuraciones predeterminadas
-    r.GET("/ping", func(c *gin.Context) {
-        c.JSON(200, gin.H{
-            "message": "pong",
-        })
-    })
-    r.Run() // Inicia el servidor en el puerto 8080
+	// Conectar a MongoDB
+	config.ConnectDB()
+
+	// Crear el router
+	router := gin.Default()
+
+	// Cargar rutas
+	routes.SetupRoutes(router)
+
+	// Iniciar el servidor
+	router.Run(":8080")
 }
